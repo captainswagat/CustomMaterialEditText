@@ -208,6 +208,7 @@ public class EditTextCustomLayout extends RelativeLayout {
 
     public void setError(String errMsg){
 
+        userEditText.setTextColor(errorColor);
         rlContainer.setBackgroundDrawable(layoutBorderOnError);
         tvHintTextView.setTextColor(errorColor);
         tvHelperText.setTextColor(errorColor);
