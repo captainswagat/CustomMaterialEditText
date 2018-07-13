@@ -115,7 +115,7 @@ public class EditTextCustomLayout extends RelativeLayout {
                     if(hasFocus){
 
                         if(!hasError) {
-
+                            userEditText.setTextColor(hintColor);
                             tvHintTextView.setTextColor(borderColorOnFocus);
                             rlContainer.setBackgroundDrawable(layoutBorderOnFocus);
                             tvHintTextView.animate().translationY(-rlContainer.getHeight() / 2-18);
@@ -133,6 +133,7 @@ public class EditTextCustomLayout extends RelativeLayout {
                     }else {
 
                         if (!hasError) {
+                            userEditText.setTextColor(hintColor);
                             tvHintTextView.setTextColor(borderColor);
 
                             if (editText.getText().toString().equals("")) {
@@ -220,6 +221,7 @@ public class EditTextCustomLayout extends RelativeLayout {
 
         if(!hasErrorEnable){
 
+            hasError=false;
             if(userEditText.isFocused()){
                 rlContainer.setBackgroundDrawable(layoutBorderOnFocus);
                 tvHelperText.setVisibility(INVISIBLE);
