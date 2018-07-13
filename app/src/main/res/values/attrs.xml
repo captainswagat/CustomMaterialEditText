@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="etParms">
+        <attr name="hinttext" format="string" />
+        <attr name="hintmarginleft" format="dimension" />
+        <attr name="hintmarginleftBefore" format="dimension" />
+        <attr name="hintTextSize" format="dimension" />
+
+
+        <attr name="errorcolor" format="color" />
+        <attr name="hintcolor" format="color" />
+        <attr name="bordercolor" format="color" />
+
+        <attr name="hintbackgroundcolor" format="color" />
+
+
+
+
+    </declare-styleable>
+</resources>
