@@ -110,16 +110,16 @@ public class EditTextCustomLayout extends RelativeLayout {
                         if(!hasError) {
 
                             rlContainer.setBackgroundDrawable(layoutBorderOnFocus);
-                            tvHintTextView.animate().translationY(-rlContainer.getHeight() / 2-10);
+                            tvHintTextView.animate().translationY(-rlContainer.getHeight() / 2-18);
                             tvHintTextView.animate().translationX(hitLeftMargin);
-                            tvHintTextView.animate().scaleX(0.7f);
-                            tvHintTextView.animate().scaleY(0.7f);
+                            tvHintTextView.animate().scaleX(0.8f);
+                            tvHintTextView.animate().scaleY(0.8f);
                             setTvHintViewBackground();
                         }else {
-                            tvHintTextView.animate().translationY(-rlContainer.getHeight() / 2-10);
+                            tvHintTextView.animate().translationY(-rlContainer.getHeight() / 2-18);
                             tvHintTextView.animate().translationX(hitLeftMargin);
-                            tvHintTextView.animate().scaleX(0.7f);
-                            tvHintTextView.animate().scaleY(0.7f);
+                            tvHintTextView.animate().scaleX(0.8f);
+                            tvHintTextView.animate().scaleY(0.8f);
                             setTvHintViewBackground();
                         }
                     }else {
@@ -215,6 +215,12 @@ public class EditTextCustomLayout extends RelativeLayout {
         }
     }
 
+    public void setHintText(String msg){
+
+        tvHintTextView.setText(msg);
+
+    }
+
 
     private void setupEditTextLayout(){
 
@@ -264,7 +270,7 @@ public class EditTextCustomLayout extends RelativeLayout {
 
 
         RelativeLayout.LayoutParams rlContainerParms=new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
-        rlContainerParms.setMargins(0,10,0,0);
+        rlContainerParms.setMargins(0,18,0,0);
         rlContainerParms.addRule(ABOVE,tvHelperText.getId());
         rlContainer=new RelativeLayout(getContext());
         rlContainer.setLayoutParams(rlContainerParms);
@@ -276,7 +282,7 @@ public class EditTextCustomLayout extends RelativeLayout {
         tvHintTextView=new TextView(getContext());
         tvHintTextView.setLayoutParams(tvHintParms);
         tvHintTextView.setVisibility(VISIBLE);
-        tvHintTextView.setPadding(5,0,5,0);
+        tvHintTextView.setPadding(15,0,15,0);
         tvHintTextView.setBackgroundColor(hintbackgroundcolor);
         tvHintTextView.setText(hintText);
         tvHintTextView.setTextSize(hintTextSize);
