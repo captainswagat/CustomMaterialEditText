@@ -222,6 +222,7 @@ public class EditTextCustomLayout extends RelativeLayout {
         if(!hasErrorEnable){
 
             hasError=false;
+            userEditText.setTextColor(hintColor);
             if(userEditText.isFocused()){
                 rlContainer.setBackgroundDrawable(layoutBorderOnFocus);
                 tvHelperText.setVisibility(INVISIBLE);
