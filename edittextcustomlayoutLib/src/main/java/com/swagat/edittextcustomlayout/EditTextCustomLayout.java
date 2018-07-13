@@ -13,7 +13,6 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-
 public class EditTextCustomLayout extends RelativeLayout {
 
     LayoutInflater mInflater;
@@ -33,8 +32,8 @@ public class EditTextCustomLayout extends RelativeLayout {
     int errorColor;
     int hintColor;
     int borderColor;
-    int hintbackgroundcolor;
     int borderColorOnFocus;
+    int hintbackgroundcolor;
 
     int borderWidth;
     int borderWidthOnFocus;
@@ -43,6 +42,9 @@ public class EditTextCustomLayout extends RelativeLayout {
 
 
     boolean hasError=false;
+
+    EditText userEditText;
+
 
     public EditTextCustomLayout(Context context) {
         super(context);
@@ -79,6 +81,7 @@ public class EditTextCustomLayout extends RelativeLayout {
 
 
         tvHintTextView.setText(hintText);
+        tvHintTextView.setTextSize(hintTextSize);
         setTvHintViewBackgroundToTransparent();
         tvHintTextView.setY(rlContainer.getHeight()/2-10);
 
@@ -93,11 +96,11 @@ public class EditTextCustomLayout extends RelativeLayout {
 
             final EditText editText=(EditText) child;
 
+            userEditText=editText;
 
             LayoutParams etParm = (LayoutParams) editText.getLayoutParams();
             userEditTextMerginLeft=etParm.leftMargin;
 
-            tvHintTextView.setTextSize(editText.getTextSize());
 
             setMarginOrPaddintToTextHintView(etParm,editText.getPaddingLeft(),editText.getPaddingBottom());
             setTextOrHintSize(editText.getTextSize());
@@ -112,6 +115,7 @@ public class EditTextCustomLayout extends RelativeLayout {
                     if(hasFocus){
 
                         if(!hasError) {
+
                             tvHintTextView.setTextColor(borderColorOnFocus);
                             rlContainer.setBackgroundDrawable(layoutBorderOnFocus);
                             tvHintTextView.animate().translationY(-rlContainer.getHeight() / 2-18);
@@ -138,7 +142,7 @@ public class EditTextCustomLayout extends RelativeLayout {
                                 tvHintTextView.animate().translationX(0);
                                 tvHintTextView.animate().scaleX(1);
                                 tvHintTextView.animate().scaleY(1);
-                              //  setTvHintViewBackgroundToTransparent();
+                                // setTvHintViewBackgroundToTransparent();
 
                             }else {
                                 rlContainer.setBackgroundDrawable(layoutBorder);
@@ -146,11 +150,15 @@ public class EditTextCustomLayout extends RelativeLayout {
                             }
                         }
                         else {
-                            tvHintTextView.animate().translationY(-20);
-                            tvHintTextView.animate().translationX(0);
-                            tvHintTextView.animate().scaleX(1);
-                            tvHintTextView.animate().scaleY(1);
-                            setTvHintViewBackgroundToTransparent();
+
+                            if(editText.getText().toString().equals("")) {
+
+                                tvHintTextView.animate().translationY(-20);
+                                tvHintTextView.animate().translationX(0);
+                                tvHintTextView.animate().scaleX(1);
+                                tvHintTextView.animate().scaleY(1);
+                                //  setTvHintViewBackgroundToTransparent();
+                            }
                         }
                     }
                 }
@@ -211,19 +219,22 @@ public class EditTextCustomLayout extends RelativeLayout {
 
         if(!hasErrorEnable){
 
-            rlContainer.setBackgroundDrawable(layoutBorder);
-            tvHintTextView.setTextColor(hintColor);
-            tvHelperText.setVisibility(INVISIBLE);
-            hasError=false;
-            tvHelperText.setVisibility(INVISIBLE);
+            if(userEditText.isFocused()){
+                rlContainer.setBackgroundDrawable(layoutBorderOnFocus);
+                tvHelperText.setVisibility(INVISIBLE);
+                tvHintTextView.setTextColor(borderColorOnFocus);
+
+            }else{
+                rlContainer.setBackgroundDrawable(layoutBorder);
+                tvHintTextView.setTextColor(hintColor);
+                tvHelperText.setVisibility(INVISIBLE);
+                hasError=false;
+                tvHelperText.setVisibility(INVISIBLE);
+            }
+
+
 
         }
-    }
-
-    public void setHintText(String msg){
-
-        tvHintTextView.setText(msg);
-
     }
 
 
@@ -300,6 +311,7 @@ public class EditTextCustomLayout extends RelativeLayout {
 
 
         //////////////////////////////////////
+
 
         rlMainContainer.addView(rlContainer);
         rlMainContainer.addView(tvHintTextView);

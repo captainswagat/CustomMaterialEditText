@@ -44,6 +44,9 @@ public class EditTextCustomLayoutDemo extends RelativeLayout {
 
     boolean hasError=false;
 
+    EditText userEditText;
+
+
     public EditTextCustomLayoutDemo(Context context) {
         super(context);
         mInflater = LayoutInflater.from(context);
@@ -94,6 +97,7 @@ public class EditTextCustomLayoutDemo extends RelativeLayout {
 
             final EditText editText=(EditText) child;
 
+            userEditText=editText;
 
             LayoutParams etParm = (LayoutParams) editText.getLayoutParams();
             userEditTextMerginLeft=etParm.leftMargin;
@@ -147,11 +151,15 @@ public class EditTextCustomLayoutDemo extends RelativeLayout {
                             }
                         }
                         else {
-                            tvHintTextView.animate().translationY(-20);
-                            tvHintTextView.animate().translationX(0);
-                            tvHintTextView.animate().scaleX(1);
-                            tvHintTextView.animate().scaleY(1);
-                          //  setTvHintViewBackgroundToTransparent();
+
+                            if(editText.getText().toString().equals("")) {
+
+                                tvHintTextView.animate().translationY(-20);
+                                tvHintTextView.animate().translationX(0);
+                                tvHintTextView.animate().scaleX(1);
+                                tvHintTextView.animate().scaleY(1);
+                                //  setTvHintViewBackgroundToTransparent();
+                            }
                         }
                     }
                 }
@@ -212,11 +220,20 @@ public class EditTextCustomLayoutDemo extends RelativeLayout {
 
         if(!hasErrorEnable){
 
-            rlContainer.setBackgroundDrawable(layoutBorder);
-            tvHintTextView.setTextColor(hintColor);
-            tvHelperText.setVisibility(INVISIBLE);
-            hasError=false;
-            tvHelperText.setVisibility(INVISIBLE);
+            if(userEditText.isFocused()){
+                rlContainer.setBackgroundDrawable(layoutBorderOnFocus);
+                tvHelperText.setVisibility(INVISIBLE);
+                tvHintTextView.setTextColor(borderColorOnFocus);
+
+            }else{
+                rlContainer.setBackgroundDrawable(layoutBorder);
+                tvHintTextView.setTextColor(hintColor);
+                tvHelperText.setVisibility(INVISIBLE);
+                hasError=false;
+                tvHelperText.setVisibility(INVISIBLE);
+            }
+
+
 
         }
     }
