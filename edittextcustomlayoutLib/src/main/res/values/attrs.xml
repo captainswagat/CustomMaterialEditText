@@ -10,11 +10,13 @@
         <attr name="errorcolor" format="color" />
         <attr name="hintcolor" format="color" />
         <attr name="bordercolor" format="color" />
+        <attr name="bordercoloronfocus" format="color" />
 
         <attr name="hintbackgroundcolor" format="color" />
 
 
-
+        <attr name="borderwidth" format="dimension" />
+        <attr name="borderwidthonfocus" format="dimension" />
 
     </declare-styleable>
 </resources>

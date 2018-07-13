@@ -34,6 +34,10 @@ public class EditTextCustomLayout extends RelativeLayout {
     int hintColor;
     int borderColor;
     int hintbackgroundcolor;
+    int borderColorOnFocus;
+
+    int borderWidth;
+    int borderWidthOnFocus;
 
     GradientDrawable layoutBorder,layoutBorderOnFocus,layoutBorderOnError;
 
@@ -108,7 +112,7 @@ public class EditTextCustomLayout extends RelativeLayout {
                     if(hasFocus){
 
                         if(!hasError) {
-
+                            tvHintTextView.setTextColor(borderColorOnFocus);
                             rlContainer.setBackgroundDrawable(layoutBorderOnFocus);
                             tvHintTextView.animate().translationY(-rlContainer.getHeight() / 2-18);
                             tvHintTextView.animate().translationX(hitLeftMargin);
@@ -125,6 +129,7 @@ public class EditTextCustomLayout extends RelativeLayout {
                     }else {
 
                         if (!hasError) {
+                            tvHintTextView.setTextColor(borderColor);
 
                             if (editText.getText().toString().equals("")) {
 
@@ -133,7 +138,7 @@ public class EditTextCustomLayout extends RelativeLayout {
                                 tvHintTextView.animate().translationX(0);
                                 tvHintTextView.animate().scaleX(1);
                                 tvHintTextView.animate().scaleY(1);
-                                setTvHintViewBackgroundToTransparent();
+                              //  setTvHintViewBackgroundToTransparent();
 
                             }else {
                                 rlContainer.setBackgroundDrawable(layoutBorder);
@@ -225,13 +230,13 @@ public class EditTextCustomLayout extends RelativeLayout {
     private void setupEditTextLayout(){
 
         layoutBorder = (GradientDrawable) getResources().getDrawable(R.drawable.edittext_parent_layout_background);
-        layoutBorder.setStroke(5,borderColor);
+        layoutBorder.setStroke(borderWidth,borderColor);
 
         layoutBorderOnFocus = (GradientDrawable) getResources().getDrawable(R.drawable.edittext_parent_layout_background_on_focus);
-        layoutBorderOnFocus.setStroke(7,borderColor);
+        layoutBorderOnFocus.setStroke(borderWidthOnFocus,borderColorOnFocus);
 
         layoutBorderOnError = (GradientDrawable) getResources().getDrawable(R.drawable.edittext_parent_layout_background_on_error);
-        layoutBorderOnError.setStroke(6,errorColor);
+        layoutBorderOnError.setStroke(borderWidth,errorColor);
 
     }
 
@@ -245,6 +250,11 @@ public class EditTextCustomLayout extends RelativeLayout {
         borderColor = att.getColor(R.styleable.etParms_bordercolor,Color.WHITE);
         errorColor = att.getColor(R.styleable.etParms_errorcolor,Color.RED);
         hintbackgroundcolor = att.getColor(R.styleable.etParms_hintbackgroundcolor,Color.WHITE);
+
+        borderWidth = att.getDimensionPixelSize(R.styleable.etParms_borderwidth,2);
+        borderWidthOnFocus = att.getDimensionPixelSize(R.styleable.etParms_borderwidthonfocus,4);
+
+        borderColorOnFocus = att.getColor(R.styleable.etParms_bordercoloronfocus,Color.WHITE);
     }
 
     @SuppressLint("ResourceType")
