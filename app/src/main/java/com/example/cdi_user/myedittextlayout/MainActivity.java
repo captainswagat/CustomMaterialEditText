@@ -1,19 +1,17 @@
 package com.example.cdi_user.myedittextlayout;
 
-import android.app.Activity;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 
 public class MainActivity extends AppCompatActivity {
 
     Button btn;
-    EditTextCustomLayout etinp;
+    EditTextCustomLayoutDemo etinp;
     EditText et;
 
     @Override
@@ -22,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         btn=(Button) findViewById(R.id.btn);
-        etinp=(EditTextCustomLayout)findViewById(R.id.etinp);
+        etinp=(EditTextCustomLayoutDemo)findViewById(R.id.etinp);
         et=(EditText)findViewById(R.id.et);
 
 

@@ -14,7 +14,7 @@ import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-public class EditTextCustomLayout extends RelativeLayout {
+public class EditTextCustomLayoutDemo extends RelativeLayout {
 
     LayoutInflater mInflater;
 
@@ -40,20 +40,20 @@ public class EditTextCustomLayout extends RelativeLayout {
 
     boolean hasError=false;
 
-    public EditTextCustomLayout(Context context) {
+    public EditTextCustomLayoutDemo(Context context) {
         super(context);
         mInflater = LayoutInflater.from(context);
         initView();
     }
 
-    public EditTextCustomLayout(Context context, AttributeSet attrs) {
+    public EditTextCustomLayoutDemo(Context context, AttributeSet attrs) {
         super(context, attrs);
         mInflater = LayoutInflater.from(context);
         att = context.getTheme().obtainStyledAttributes(attrs, R.styleable.etParms, 0, 0);
         initView();
     }
 
-    public EditTextCustomLayout(Context context, AttributeSet attrs, int defStyleAttr) {
+    public EditTextCustomLayoutDemo(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         mInflater = LayoutInflater.from(context);
         initView();

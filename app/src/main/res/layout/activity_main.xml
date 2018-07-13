@@ -24,7 +24,7 @@
             android:src="@drawable/ic_fingerprint_black_24dp"
             android:layout_alignParentLeft="true"
             android:layout_marginLeft="10dp" />
-    <com.example.cdi_user.myedittextlayout.EditTextCustomLayout
+    <com.example.cdi_user.myedittextlayout.EditTextCustomLayoutDemo
         android:layout_width="match_parent"
         custom:hinttext="user Email"
         android:id="@+id/etinp"
@@ -47,7 +47,7 @@
             android:inputType="text"
             tools:ignore="LabelFor" />
 
-    </com.example.cdi_user.myedittextlayout.EditTextCustomLayout>
+    </com.example.cdi_user.myedittextlayout.EditTextCustomLayoutDemo>
     </RelativeLayout>
 
 
@@ -61,7 +61,7 @@
             android:layout_height="30dp"
             android:layout_centerVertical="true"
             android:src="@drawable/ic_launcher_background" />
-        <com.example.cdi_user.myedittextlayout.EditTextCustomLayout
+        <com.example.cdi_user.myedittextlayout.EditTextCustomLayoutDemo
             android:layout_width="match_parent"
             custom:hinttext="aaa"
             android:layout_height="match_parent">
@@ -70,7 +70,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
 
-        </com.example.cdi_user.myedittextlayout.EditTextCustomLayout>
+        </com.example.cdi_user.myedittextlayout.EditTextCustomLayoutDemo>
     </RelativeLayout>
 
     <Button
