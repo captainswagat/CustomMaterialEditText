@@ -75,7 +75,6 @@ public class EditTextCustomLayout extends RelativeLayout {
 
 
         tvHintTextView.setText(hintText);
-        tvHintTextView.setTextSize(hintTextSize);
         setTvHintViewBackgroundToTransparent();
         tvHintTextView.setY(rlContainer.getHeight()/2-10);
 
@@ -94,6 +93,7 @@ public class EditTextCustomLayout extends RelativeLayout {
             LayoutParams etParm = (LayoutParams) editText.getLayoutParams();
             userEditTextMerginLeft=etParm.leftMargin;
 
+            tvHintTextView.setTextSize(editText.getTextSize());
 
             setMarginOrPaddintToTextHintView(etParm,editText.getPaddingLeft(),editText.getPaddingBottom());
             setTextOrHintSize(editText.getTextSize());
