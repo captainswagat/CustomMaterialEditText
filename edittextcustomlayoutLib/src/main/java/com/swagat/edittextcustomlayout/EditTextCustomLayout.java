@@ -98,6 +98,13 @@ public class EditTextCustomLayout extends RelativeLayout {
 
             userEditText=editText;
 
+            if(!editText.getText().toString().equals("")){
+                tvHintTextView.animate().translationY(-rlContainer.getHeight() / 2-18);
+                tvHintTextView.animate().translationX(hitLeftMargin);
+                tvHintTextView.animate().scaleX(0.8f);
+                tvHintTextView.animate().scaleY(0.8f);
+            }
+
             LayoutParams etParm = (LayoutParams) editText.getLayoutParams();
             userEditTextMerginLeft=etParm.leftMargin;
 
