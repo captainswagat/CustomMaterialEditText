@@ -153,6 +153,10 @@ public class EditTextCustomLayout extends RelativeLayout {
                                 // setTvHintViewBackgroundToTransparent();
 
                             }else {
+                                tvHintTextView.animate().translationY(-rlContainer.getHeight() / 2-18);
+                                tvHintTextView.animate().translationX(hitLeftMargin);
+                                tvHintTextView.animate().scaleX(0.8f);
+                                tvHintTextView.animate().scaleY(0.8f);
                                 rlContainer.setBackgroundDrawable(layoutBorder);
 
                             }
