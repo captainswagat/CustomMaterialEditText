@@ -229,6 +229,16 @@ public class EditTextCustomLayout extends RelativeLayout {
         tvHelperText.setText(errMsg);
         hasError=true;
     }
+    public void setErrorSpannable(SpannableString txt){
+        userEditText.setTextColor(errorColor);
+        rlContainer.setBackgroundDrawable(layoutBorderOnError);
+        tvHintTextView.setTextColor(errorColor);
+        tvHelperText.setTextColor(errorColor);
+        tvHelperText.setVisibility(VISIBLE);
+        tvHelperText.setText(txt);
+        hasError=true;
+    }
+
     public void setErrorEnable(boolean hasErrorEnable){
 
         if(!hasErrorEnable){
