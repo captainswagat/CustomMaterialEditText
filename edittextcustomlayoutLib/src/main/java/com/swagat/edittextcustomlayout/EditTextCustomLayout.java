@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
+import android.text.SpannableString;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
@@ -98,7 +99,7 @@ public class EditTextCustomLayout extends RelativeLayout {
 
             userEditText=editText;
 
-            if(!editText.getText().toString().equals("")){
+            if(!userEditText.getText().toString().equals("")){
                 tvHintTextView.animate().translationY(-rlContainer.getHeight() / 2-18);
                 tvHintTextView.animate().translationX(hitLeftMargin);
                 tvHintTextView.animate().scaleX(0.8f);
@@ -250,6 +251,19 @@ public class EditTextCustomLayout extends RelativeLayout {
 
 
         }
+    }
+
+    public void setHintText(SpannableString text){
+
+        tvHintTextView.setText(text);
+    }
+
+    public void EditTexthasText(){
+
+        tvHintTextView.animate().translationY(-rlContainer.getHeight() / 2-18);
+        tvHintTextView.animate().translationX(hitLeftMargin);
+        tvHintTextView.animate().scaleX(0.8f);
+        tvHintTextView.animate().scaleY(0.8f);
     }
 
 
