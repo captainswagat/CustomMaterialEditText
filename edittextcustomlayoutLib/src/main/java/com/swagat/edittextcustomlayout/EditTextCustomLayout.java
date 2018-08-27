@@ -2,10 +2,13 @@ package com.swagat.edittextcustomlayout;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
+import android.text.Editable;
 import android.text.SpannableString;
+import android.text.TextWatcher;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
@@ -14,6 +17,9 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
+import java.util.logging.Handler;
+
 public class EditTextCustomLayout extends RelativeLayout {
 
     LayoutInflater mInflater;
@@ -116,6 +122,41 @@ public class EditTextCustomLayout extends RelativeLayout {
             editText.setBackgroundDrawable(null);
             editText.clearFocus();
 
+            editText.addTextChangedListener(new TextWatcher() {
+                @Override
+                public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+                    if(editText.getText().toString().equals("")){
+
+                        new android.os.Handler().postDelayed(new Runnable() {
+
+
+                            @Override
+                            public void run() {
+
+                                tvHintTextView.animate().translationY(-rlContainer.getHeight() / 2-18);
+                                tvHintTextView.animate().translationX(hitLeftMargin);
+                                tvHintTextView.animate().scaleX(0.8f);
+                                tvHintTextView.animate().scaleY(0.8f);
+                                setTvHintViewBackground();
+
+                            }
+                        }, 100);
+                    }
+
+
+                }
+
+                @Override
+                public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+                }
+
+                @Override
+                public void afterTextChanged(Editable editable) {
+
+                }
+            });
 
             editText.setOnFocusChangeListener(new OnFocusChangeListener() {
                 @Override
