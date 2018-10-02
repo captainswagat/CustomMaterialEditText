@@ -5,8 +5,12 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
+import android.text.Editable;
+import android.text.SpannableString;
+import android.text.TextWatcher;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -39,6 +43,8 @@ public class EditTextCustomLayoutDemo extends RelativeLayout {
     int borderWidth;
     int borderWidthOnFocus;
 
+    int animatilExtraValue;
+
     GradientDrawable layoutBorder,layoutBorderOnFocus,layoutBorderOnError;
 
 
@@ -67,6 +73,9 @@ public class EditTextCustomLayoutDemo extends RelativeLayout {
     }
 
     private void initView() {
+        animatilExtraValue = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 5, getResources().getDisplayMetrics());
+
+
         getCustomAttributes();
         setupEditTextLayout();
 
@@ -99,6 +108,13 @@ public class EditTextCustomLayoutDemo extends RelativeLayout {
 
             userEditText=editText;
 
+            if(!userEditText.getText().toString().equals("")){
+                tvHintTextView.animate().translationY(-rlContainer.getHeight() / 2-animatilExtraValue);
+                tvHintTextView.animate().translationX(hitLeftMargin);
+                tvHintTextView.animate().scaleX(0.8f);
+                tvHintTextView.animate().scaleY(0.8f);
+            }
+
             LayoutParams etParm = (LayoutParams) editText.getLayoutParams();
             userEditTextMerginLeft=etParm.leftMargin;
 
@@ -109,6 +125,41 @@ public class EditTextCustomLayoutDemo extends RelativeLayout {
             editText.setBackgroundDrawable(null);
             editText.clearFocus();
 
+            editText.addTextChangedListener(new TextWatcher() {
+                @Override
+                public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+                    if(editText.getText().toString().equals("")){
+
+                        new android.os.Handler().postDelayed(new Runnable() {
+
+
+                            @Override
+                            public void run() {
+
+                                tvHintTextView.animate().translationY(-rlContainer.getHeight() / 2-animatilExtraValue);
+                                tvHintTextView.animate().translationX(hitLeftMargin);
+                                tvHintTextView.animate().scaleX(0.8f);
+                                tvHintTextView.animate().scaleY(0.8f);
+                                setTvHintViewBackground();
+
+                            }
+                        }, 100);
+                    }
+
+
+                }
+
+                @Override
+                public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+                }
+
+                @Override
+                public void afterTextChanged(Editable editable) {
+
+                }
+            });
 
             editText.setOnFocusChangeListener(new OnFocusChangeListener() {
                 @Override
@@ -116,16 +167,16 @@ public class EditTextCustomLayoutDemo extends RelativeLayout {
                     if(hasFocus){
 
                         if(!hasError) {
-
+                            userEditText.setTextColor(hintColor);
                             tvHintTextView.setTextColor(borderColorOnFocus);
                             rlContainer.setBackgroundDrawable(layoutBorderOnFocus);
-                            tvHintTextView.animate().translationY(-rlContainer.getHeight() / 2-18);
+                            tvHintTextView.animate().translationY(-rlContainer.getHeight() / 2-animatilExtraValue);
                             tvHintTextView.animate().translationX(hitLeftMargin);
                             tvHintTextView.animate().scaleX(0.8f);
                             tvHintTextView.animate().scaleY(0.8f);
                             setTvHintViewBackground();
                         }else {
-                            tvHintTextView.animate().translationY(-rlContainer.getHeight() / 2-18);
+                            tvHintTextView.animate().translationY(-rlContainer.getHeight() / 2-animatilExtraValue);
                             tvHintTextView.animate().translationX(hitLeftMargin);
                             tvHintTextView.animate().scaleX(0.8f);
                             tvHintTextView.animate().scaleY(0.8f);
@@ -134,6 +185,7 @@ public class EditTextCustomLayoutDemo extends RelativeLayout {
                     }else {
 
                         if (!hasError) {
+                            userEditText.setTextColor(hintColor);
                             tvHintTextView.setTextColor(borderColor);
 
                             if (editText.getText().toString().equals("")) {
@@ -143,9 +195,13 @@ public class EditTextCustomLayoutDemo extends RelativeLayout {
                                 tvHintTextView.animate().translationX(0);
                                 tvHintTextView.animate().scaleX(1);
                                 tvHintTextView.animate().scaleY(1);
-                               // setTvHintViewBackgroundToTransparent();
+                                // setTvHintViewBackgroundToTransparent();
 
                             }else {
+                                tvHintTextView.animate().translationY(-rlContainer.getHeight() / 2-animatilExtraValue);
+                                tvHintTextView.animate().translationX(hitLeftMargin);
+                                tvHintTextView.animate().scaleX(0.8f);
+                                tvHintTextView.animate().scaleY(0.8f);
                                 rlContainer.setBackgroundDrawable(layoutBorder);
 
                             }
@@ -209,6 +265,7 @@ public class EditTextCustomLayoutDemo extends RelativeLayout {
 
     public void setError(String errMsg){
 
+        userEditText.setTextColor(errorColor);
         rlContainer.setBackgroundDrawable(layoutBorderOnError);
         tvHintTextView.setTextColor(errorColor);
         tvHelperText.setTextColor(errorColor);
@@ -216,10 +273,22 @@ public class EditTextCustomLayoutDemo extends RelativeLayout {
         tvHelperText.setText(errMsg);
         hasError=true;
     }
+    public void setErrorSpannable(SpannableString txt){
+        userEditText.setTextColor(errorColor);
+        rlContainer.setBackgroundDrawable(layoutBorderOnError);
+        tvHintTextView.setTextColor(errorColor);
+        tvHelperText.setTextColor(errorColor);
+        tvHelperText.setVisibility(VISIBLE);
+        tvHelperText.setText(txt);
+        hasError=true;
+    }
+
     public void setErrorEnable(boolean hasErrorEnable){
 
         if(!hasErrorEnable){
 
+            hasError=false;
+            userEditText.setTextColor(hintColor);
             if(userEditText.isFocused()){
                 rlContainer.setBackgroundDrawable(layoutBorderOnFocus);
                 tvHelperText.setVisibility(INVISIBLE);
@@ -236,6 +305,19 @@ public class EditTextCustomLayoutDemo extends RelativeLayout {
 
 
         }
+    }
+
+    public void setHintText(SpannableString text){
+
+        tvHintTextView.setText(text);
+    }
+
+    public void EditTexthasText(){
+
+        tvHintTextView.animate().translationY(-rlContainer.getHeight() / 2-animatilExtraValue);
+        tvHintTextView.animate().translationX(hitLeftMargin);
+        tvHintTextView.animate().scaleX(0.8f);
+        tvHintTextView.animate().scaleY(0.8f);
     }
 
 

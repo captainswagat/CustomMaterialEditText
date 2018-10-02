@@ -11,6 +11,7 @@ import android.text.SpannableString;
 import android.text.TextWatcher;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -45,6 +46,8 @@ public class EditTextCustomLayout extends RelativeLayout {
     int borderWidth;
     int borderWidthOnFocus;
 
+    int animatilExtraValue;
+
     GradientDrawable layoutBorder,layoutBorderOnFocus,layoutBorderOnError;
 
 
@@ -73,6 +76,9 @@ public class EditTextCustomLayout extends RelativeLayout {
     }
 
     private void initView() {
+        animatilExtraValue = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 5, getResources().getDisplayMetrics());
+
+
         getCustomAttributes();
         setupEditTextLayout();
 
@@ -106,7 +112,7 @@ public class EditTextCustomLayout extends RelativeLayout {
             userEditText=editText;
 
             if(!userEditText.getText().toString().equals("")){
-                tvHintTextView.animate().translationY(-rlContainer.getHeight() / 2-18);
+                tvHintTextView.animate().translationY(-rlContainer.getHeight() / 2-animatilExtraValue);
                 tvHintTextView.animate().translationX(hitLeftMargin);
                 tvHintTextView.animate().scaleX(0.8f);
                 tvHintTextView.animate().scaleY(0.8f);
@@ -134,7 +140,7 @@ public class EditTextCustomLayout extends RelativeLayout {
                             @Override
                             public void run() {
 
-                                tvHintTextView.animate().translationY(-rlContainer.getHeight() / 2-18);
+                                tvHintTextView.animate().translationY(-rlContainer.getHeight() / 2-animatilExtraValue);
                                 tvHintTextView.animate().translationX(hitLeftMargin);
                                 tvHintTextView.animate().scaleX(0.8f);
                                 tvHintTextView.animate().scaleY(0.8f);
@@ -167,13 +173,13 @@ public class EditTextCustomLayout extends RelativeLayout {
                             userEditText.setTextColor(hintColor);
                             tvHintTextView.setTextColor(borderColorOnFocus);
                             rlContainer.setBackgroundDrawable(layoutBorderOnFocus);
-                            tvHintTextView.animate().translationY(-rlContainer.getHeight() / 2-18);
+                            tvHintTextView.animate().translationY(-rlContainer.getHeight() / 2-animatilExtraValue);
                             tvHintTextView.animate().translationX(hitLeftMargin);
                             tvHintTextView.animate().scaleX(0.8f);
                             tvHintTextView.animate().scaleY(0.8f);
                             setTvHintViewBackground();
                         }else {
-                            tvHintTextView.animate().translationY(-rlContainer.getHeight() / 2-18);
+                            tvHintTextView.animate().translationY(-rlContainer.getHeight() / 2-animatilExtraValue);
                             tvHintTextView.animate().translationX(hitLeftMargin);
                             tvHintTextView.animate().scaleX(0.8f);
                             tvHintTextView.animate().scaleY(0.8f);
@@ -195,7 +201,7 @@ public class EditTextCustomLayout extends RelativeLayout {
                                 // setTvHintViewBackgroundToTransparent();
 
                             }else {
-                                tvHintTextView.animate().translationY(-rlContainer.getHeight() / 2-18);
+                                tvHintTextView.animate().translationY(-rlContainer.getHeight() / 2-animatilExtraValue);
                                 tvHintTextView.animate().translationX(hitLeftMargin);
                                 tvHintTextView.animate().scaleX(0.8f);
                                 tvHintTextView.animate().scaleY(0.8f);
@@ -311,7 +317,7 @@ public class EditTextCustomLayout extends RelativeLayout {
 
     public void EditTexthasText(){
 
-        tvHintTextView.animate().translationY(-rlContainer.getHeight() / 2-18);
+        tvHintTextView.animate().translationY(-rlContainer.getHeight() / 2-animatilExtraValue);
         tvHintTextView.animate().translationX(hitLeftMargin);
         tvHintTextView.animate().scaleX(0.8f);
         tvHintTextView.animate().scaleY(0.8f);
