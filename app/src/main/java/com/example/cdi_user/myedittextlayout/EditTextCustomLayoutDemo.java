@@ -93,7 +93,7 @@ public class EditTextCustomLayoutDemo extends RelativeLayout {
         tvHintTextView.setText(hintText);
         tvHintTextView.setTextSize(hintTextSize);
         setTvHintViewBackgroundToTransparent();
-        tvHintTextView.setY(rlContainer.getHeight()/2-10);
+        tvHintTextView.setY(rlContainer.getHeight()/2);
 
     }
 
@@ -191,7 +191,7 @@ public class EditTextCustomLayoutDemo extends RelativeLayout {
                             if (editText.getText().toString().equals("")) {
 
                                 rlContainer.setBackgroundDrawable(layoutBorder);
-                                tvHintTextView.animate().translationY(-20);
+                                tvHintTextView.animate().translationY(0);
                                 tvHintTextView.animate().translationX(0);
                                 tvHintTextView.animate().scaleX(1);
                                 tvHintTextView.animate().scaleY(1);
@@ -210,7 +210,7 @@ public class EditTextCustomLayoutDemo extends RelativeLayout {
 
                             if(editText.getText().toString().equals("")) {
 
-                                tvHintTextView.animate().translationY(-20);
+                                tvHintTextView.animate().translationY(0);
                                 tvHintTextView.animate().translationX(0);
                                 tvHintTextView.animate().scaleX(1);
                                 tvHintTextView.animate().scaleY(1);
