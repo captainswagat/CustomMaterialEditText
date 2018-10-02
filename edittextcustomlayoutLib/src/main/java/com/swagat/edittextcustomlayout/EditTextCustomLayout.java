@@ -58,6 +58,7 @@ public class EditTextCustomLayout extends RelativeLayout {
 
     public EditTextCustomLayout(Context context) {
         super(context);
+        animatilExtraValue = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 5, context.getResources().getDisplayMetrics());
         mInflater = LayoutInflater.from(context);
         initView();
     }
@@ -65,6 +66,7 @@ public class EditTextCustomLayout extends RelativeLayout {
     public EditTextCustomLayout(Context context, AttributeSet attrs) {
         super(context, attrs);
         mInflater = LayoutInflater.from(context);
+        animatilExtraValue = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 5, context.getResources().getDisplayMetrics());
         att = context.getTheme().obtainStyledAttributes(attrs, R.styleable.etParms, 0, 0);
         initView();
     }
@@ -72,11 +74,12 @@ public class EditTextCustomLayout extends RelativeLayout {
     public EditTextCustomLayout(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         mInflater = LayoutInflater.from(context);
+        animatilExtraValue = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 5, context.getResources().getDisplayMetrics());
+
         initView();
     }
 
     private void initView() {
-        animatilExtraValue = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 5, getResources().getDisplayMetrics());
 
 
         getCustomAttributes();
