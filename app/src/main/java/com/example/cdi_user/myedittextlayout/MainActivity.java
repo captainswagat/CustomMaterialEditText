@@ -10,46 +10,12 @@ import android.widget.EditText;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button btn;
-    EditTextCustomLayoutDemo etinp;
-    EditText et;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        btn=(Button) findViewById(R.id.btn);
-        etinp=(EditTextCustomLayoutDemo)findViewById(R.id.etinp);
-        et=(EditText)findViewById(R.id.et);
-
-
-        btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(et.getText().toString().equals("")){
-                    etinp.setError("User name required !!");
-                }
-            }
-        });
-
-        et.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-                etinp.setErrorEnable(false);
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-
-            }
-        });
 
     }
 }

@@ -90,13 +90,14 @@ public class EditTextCustomLayout extends RelativeLayout {
 //        rlContainer = v.findViewById(R.id.rlContainer);
 
 
+        int marValue = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 10, getResources().getDisplayMetrics());
 
 
 
         tvHintTextView.setText(hintText);
         tvHintTextView.setTextSize(hintTextSize);
         setTvHintViewBackgroundToTransparent();
-        tvHintTextView.setY(rlContainer.getHeight()/2);
+        tvHintTextView.setY(-animatilExtraValue);
 
     }
 
@@ -194,7 +195,7 @@ public class EditTextCustomLayout extends RelativeLayout {
                             if (editText.getText().toString().equals("")) {
 
                                 rlContainer.setBackgroundDrawable(layoutBorder);
-                                tvHintTextView.animate().translationY(0);
+                                tvHintTextView.animate().translationY(-animatilExtraValue);
                                 tvHintTextView.animate().translationX(0);
                                 tvHintTextView.animate().scaleX(1);
                                 tvHintTextView.animate().scaleY(1);
@@ -213,7 +214,7 @@ public class EditTextCustomLayout extends RelativeLayout {
 
                             if(editText.getText().toString().equals("")) {
 
-                                tvHintTextView.animate().translationY(0);
+                                tvHintTextView.animate().translationY(-animatilExtraValue);
                                 tvHintTextView.animate().translationX(0);
                                 tvHintTextView.animate().scaleX(1);
                                 tvHintTextView.animate().scaleY(1);

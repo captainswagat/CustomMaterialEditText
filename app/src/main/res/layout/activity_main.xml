@@ -5,75 +5,107 @@
     xmlns:custom="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#121212"
+    android:background="@color/lightDark"
     android:orientation="vertical"
     tools:context=".MainActivity">
 
     <RelativeLayout
-        android:layout_margin="20dp"
         android:layout_width="match_parent"
-        android:layout_height="120dp">
+        android:layout_height="80dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="20dp">
 
         <ImageView
+            android:id="@+id/ivLoginUserNameLogo"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginLeft="12dp"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="15dp"
+            android:padding="5dp"
             android:src="@drawable/ic_fingerprint_black_24dp"
-            android:layout_alignParentLeft="true"
-            android:layout_marginLeft="10dp" />
-<com.example.cdi_user.myedittextlayout.EditTextCustomLayoutDemo
-        android:layout_width="match_parent"
-        custom:hinttext="user Email"
-        android:id="@+id/etinp"
-        custom:hintmarginleftBefore="50dp"
-        custom:hintmarginleft="6dp"
-        custom:hintTextSize="12dp"
-    custom:bordercoloronfocus="#ffffff"
-    custom:borderwidth="1dp"
-    custom:borderwidthonfocus="2dp"
-        custom:bordercolor="@color/colorPrimary"
-        custom:errorcolor="@color/colorAccent"
-        custom:hintcolor="@color/colorPrimary"
-        custom:hintbackgroundcolor="#ffffff"
-        android:layout_height="match_parent">
+            android:tint="@color/newTextColor" />
 
-        <EditText
-            android:id="@+id/et"
-            android:paddingLeft="45dp"
-            android:textSize="18dp"
-            android:layout_marginLeft="0dp"
+        <com.example.cdi_user.myedittextlayout.EditTextCustomLayoutDemo
+            android:id="@+id/inpLoginUserName"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:inputType="text"
-            tools:ignore="LabelFor" />
+            android:layout_height="73dp"
+            custom:bordercolor="@color/newTextColor"
+            custom:bordercoloronfocus="@color/newTextColor"
+            custom:borderwidth="0.7dp"
+            custom:borderwidthonfocus="2dp"
+            custom:hintTextSize="12dp"
+            custom:hintbackgroundcolor="@color/lightDark"
+            custom:hintcolor="@color/newTextColor"
+            custom:hintmarginleft="6dp"
+            custom:hintmarginleftBefore="50dp"
+            custom:hinttext="Username  / Email ID">
 
-</com.example.cdi_user.myedittextlayout.EditTextCustomLayoutDemo>
+            <EditText
+                android:id="@+id/etUsername"
+                fontPath="fonts/Exo2-Medium.ttf"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:inputType="textEmailAddress"
+                android:paddingBottom="25dp"
+                android:paddingLeft="50dp"
+                android:textColor="@color/colorLightGreyText"
+                android:textSize="15dp"
+                tools:ignore="MissingPrefix" />
+
+        </com.example.cdi_user.myedittextlayout.EditTextCustomLayoutDemo>
+
     </RelativeLayout>
 
 
     <RelativeLayout
-        android:layout_margin="20dp"
         android:layout_width="match_parent"
-        android:layout_height="90dp">
+        android:layout_height="80dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="20dp">
 
         <ImageView
+            android:id="@+id/ivLoginUsadaderNameLogo"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:layout_centerVertical="true"
-            android:src="@drawable/ic_launcher_background" />
+            android:layout_marginLeft="12dp"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="15dp"
+            android:padding="5dp"
+            android:src="@drawable/ic_fingerprint_black_24dp"
+            android:tint="@color/newTextColor" />
+
         <com.example.cdi_user.myedittextlayout.EditTextCustomLayoutDemo
+            android:id="@+id/inpLocaacginUserName"
             android:layout_width="match_parent"
-            custom:hinttext="aaa"
-            android:layout_height="match_parent">
+            android:layout_height="73dp"
+            custom:bordercolor="@color/newTextColor"
+            custom:bordercoloronfocus="@color/newTextColor"
+            custom:borderwidth="0.7dp"
+            custom:borderwidthonfocus="2dp"
+            custom:hintTextSize="12dp"
+            custom:hintbackgroundcolor="@color/lightDark"
+            custom:hintcolor="@color/newTextColor"
+            custom:hintmarginleft="6dp"
+            custom:hintmarginleftBefore="50dp"
+            custom:hinttext="Username  / Email ID">
 
             <EditText
+                android:id="@+id/etUsacascername"
+                fontPath="fonts/Exo2-Medium.ttf"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+                android:layout_height="match_parent"
+                android:inputType="textEmailAddress"
+                android:paddingBottom="25dp"
+                android:paddingLeft="50dp"
+                android:textColor="@color/colorLightGreyText"
+                android:textSize="15dp"
+                tools:ignore="MissingPrefix" />
 
         </com.example.cdi_user.myedittextlayout.EditTextCustomLayoutDemo>
+
     </RelativeLayout>
 
     <Button
