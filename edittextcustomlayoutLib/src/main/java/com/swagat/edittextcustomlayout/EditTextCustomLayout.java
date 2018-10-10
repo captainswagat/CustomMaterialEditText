@@ -367,12 +367,11 @@ public class EditTextCustomLayout extends RelativeLayout {
 
         RelativeLayout.LayoutParams tvHelpHintTextParms=new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         tvHelpHintTextParms.addRule(ALIGN_PARENT_BOTTOM);
-        tvHelpHintTextParms.setMargins(15,2,0,0);
+        tvHelpHintTextParms.setMargins(0,2,0,0);
         tvHelperText=new TextView(getContext());
         tvHelperText.setId(12);
         tvHelperText.setVisibility(INVISIBLE);
         tvHelperText.setTextColor(errorColor);
-        tvHelperText.setSingleLine(true);
         tvHelperText.setLayoutParams(tvHelpHintTextParms);
 
         ////////////////////////////
