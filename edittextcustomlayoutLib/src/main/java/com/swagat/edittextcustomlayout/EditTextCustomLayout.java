@@ -372,6 +372,7 @@ public class EditTextCustomLayout extends RelativeLayout {
         tvHelperText.setId(12);
         tvHelperText.setVisibility(INVISIBLE);
         tvHelperText.setTextColor(errorColor);
+        tvHelperText.setSingleLine(true);
         tvHelperText.setLayoutParams(tvHelpHintTextParms);
 
         ////////////////////////////
