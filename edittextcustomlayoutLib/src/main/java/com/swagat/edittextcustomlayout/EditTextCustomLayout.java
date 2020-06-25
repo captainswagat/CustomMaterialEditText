@@ -48,6 +48,7 @@ public class EditTextCustomLayout extends RelativeLayout {
 
     int animatilExtraValue;
 
+
     GradientDrawable layoutBorder,layoutBorderOnFocus,layoutBorderOnError;
 
 
